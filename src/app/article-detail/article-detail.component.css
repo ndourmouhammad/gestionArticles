@@ -1,0 +1,16 @@
+.container {
+    max-width: 800px;
+  }
+  
+  .card-title {
+    margin-bottom: 20px;
+  }
+  
+  .card-text {
+    margin-bottom: 20px;
+  }
+  
+  .btn-warning {
+    margin-right: 10px;
+  }
+  
