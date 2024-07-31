@@ -9,3 +9,14 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="comments.length > 0" class="container mt-4">
+  <h3>Commentaires</h3>
+  <div *ngFor="let comment of comments" class="card mb-2">
+    <div class="card-body">
+      <h5 class="card-title">{{ comment.name }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ comment.email }}</h6>
+      <p class="card-text">{{ comment.body }}</p>
+    </div>
+  </div>
+</div>

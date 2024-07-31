@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { Article } from './article.module';
+import { Article } from './article.model';
+import { Comment } from './comment.model'; // Import the Comment model
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
@@ -9,6 +10,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class ArticleService {
   private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private commentsUrl = 'https://jsonplaceholder.typicode.com/comments';
   private articles: Article[] = []; // In-memory array
 
   constructor(private http: HttpClient) { }
@@ -33,6 +35,12 @@ export class ArticleService {
       return of(article);
     }
     return this.http.get<Article>(`${this.apiUrl}/${id}`);
+  }
+
+  getComments(postId: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.commentsUrl}?postId=${postId}`).pipe(
+      catchError(this.handleError<Comment[]>('getComments', []))
+    );
   }
 
   createArticle(article: Article): Observable<Article> {

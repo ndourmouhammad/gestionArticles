@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { Comment } from '../comment.model'; // Import Comment model
 
 @Component({
   selector: 'app-article-detail',
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class ArticleDetailComponent implements OnInit {
   article: any;
+  comments: Comment[] = []; // Property to hold comments
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +29,14 @@ export class ArticleDetailComponent implements OnInit {
       const id = params['id'];
       this.articleService.getArticle(id).subscribe(article => {
         this.article = article;
+        this.getComments(id); // Fetch comments when article is loaded
       });
+    });
+  }
+
+  getComments(id: number): void {
+    this.articleService.getComments(id).subscribe(comments => {
+      this.comments = comments;
     });
   }
 
