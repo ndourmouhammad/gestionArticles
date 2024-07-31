@@ -21,8 +21,8 @@ export class ArticleFormComponent implements OnChanges {
 
   constructor(private fb: FormBuilder, private articleService: ArticleService) {
     this.articleForm = this.fb.group({
-      title: ['', Validators.required, Validators.minLength(3), Validators.maxLength(100)],
-      body: ['', Validators.required, Validators.minLength(3), Validators.maxLength(1000)] 
+      title: ['', Validators.required],
+      body: ['', Validators.required] // Assurez-vous que ce nom est correct
     });
   }
 
@@ -55,7 +55,7 @@ export class ArticleFormComponent implements OnChanges {
               title: 'Mis à jour !',
               text: 'L\'article a été mis à jour avec succès.',
               icon: 'success',
-              timer: 2000,  
+              timer: 2000,  // Duration in milliseconds
               showConfirmButton: false
             });
             this.articleSubmitted.emit(updatedArticle);
@@ -64,7 +64,7 @@ export class ArticleFormComponent implements OnChanges {
               title: 'Erreur !',
               text: 'Une erreur est survenue lors de la mise à jour de l\'article.',
               icon: 'error',
-              timer: 2000,  
+              timer: 2000,  // Duration in milliseconds
               showConfirmButton: false
             });
           });
@@ -75,7 +75,7 @@ export class ArticleFormComponent implements OnChanges {
               title: 'Créé !',
               text: 'L\'article a été créé avec succès.',
               icon: 'success',
-              timer: 2000,  
+              timer: 2000,  // Duration in milliseconds
               showConfirmButton: false
             });
             this.articleSubmitted.emit(newArticle);
@@ -84,7 +84,7 @@ export class ArticleFormComponent implements OnChanges {
               title: 'Erreur !',
               text: 'Une erreur est survenue lors de la création de l\'article.',
               icon: 'error',
-              timer: 2000,  
+              timer: 2000,  // Duration in milliseconds
               showConfirmButton: false
             });
           });

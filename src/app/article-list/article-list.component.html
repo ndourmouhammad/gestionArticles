@@ -1,22 +1,21 @@
 <!-- article-list.component.html</div> -->
 <div class="container mt-4 mb-4">
-    <h2 class="mb-4">Liste des Articles</h2>
-    <button (click)="addNewArticle()" class="btn btn-primary mb-3">Ajouter un Article</button>
-  
-    <app-article-form *ngIf="isFormVisible" 
-                      [article]="selectedArticle" 
-                      (articleSubmitted)="onArticleAddedOrUpdated($event)">
-    </app-article-form>
-  
-    <ul class="list-group" *ngIf="!isFormVisible">
-      <li *ngFor="let article of articles" class="list-group-item d-flex justify-content-between align-items-center">
-        <a [routerLink]="['/article', article.id]" class="flex-grow-1">{{ article.title }}</a>
-        <div>
-          <button (click)="editArticle(article)" class="btn btn-warning btn-sm mr-2">Modifier</button>
-          <button (click)="deleteArticle(article.id)" class="btn btn-danger btn-sm">Supprimer</button>
-        </div>
-      </li>
-    </ul>
-  </div>
-  
-  
+  <h2 class="mb-4">Liste des Articles</h2>
+  <button (click)="addNewArticle()" class="btn btn-primary mb-3">Ajouter un Article</button>
+
+  <app-article-form *ngIf="isFormVisible" 
+                    [article]="selectedArticle" 
+                    (articleSubmitted)="onArticleAddedOrUpdated($event)">
+  </app-article-form>
+
+  <ul class="list-group" *ngIf="!isFormVisible">
+    <li *ngFor="let article of articles" class="list-group-item d-flex justify-content-between align-items-center">
+      <a [routerLink]="['/article', article.id]" class="flex-grow-1">{{ article.title }}</a>
+      <div>
+        <button (click)="editArticle(article)" class="btn btn-warning btn-sm mr-2">Modifier</button>
+        <button (click)="deleteArticle(article.id)" class="btn btn-danger btn-sm">Supprimer</button>
+      </div>
+    </li>
+  </ul>
+</div>
+
